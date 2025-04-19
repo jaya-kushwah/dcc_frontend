@@ -17,18 +17,19 @@ function Login() {
         const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
         if (!email) {
             toast.error("please enter email");
-        } else if (!emailRegex.test(email)) {
-            toast.error("please enter valid email");
+       // }
+       //  else if (!emailRegex.test(email)) {
+       //     toast.error("please enter valid email");
         } else if (!password) {
-            toast.error("please enter password");
+           toast.error("please enter password");
         } else {
-            axios.post("http://localhost:8080/user/login", {
+            axios.post("http://localhost:8080/public/login", {
                 email: email,
                 password: password,
             })
                 .then(async (res) => {
                     if (res.status === 200) {
-                        cookies.set('token', result.data.token, { path: '/' })
+                        cookies.set('token', res.data.token, { path: '/' })
                         toast.success(res.data.message)
 
                         setTimeout(() => {

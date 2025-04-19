@@ -23,7 +23,7 @@ function Signup() {
         } else if (!password) {
             toast.error("please enter password");
         } else {
-            axios.post("http://localhost:5000/user/add", {
+            axios.post("http://localhost:8080/public/signup", {
                 userName: userName,
                 email: email,
                 password: password,
